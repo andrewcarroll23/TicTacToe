@@ -31,15 +31,16 @@ h1 {
   height: 120px;
   border: 1px solid #d3d3d3;
   background: rgba(0,0,0,0.10);
-  font-size: 40px;
+  font-size: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s;
+  font-family: "Audiowide", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.square:hover {
-  background-color: rgba(0,0,0,0.3);
-}
 
 #square0 {
   border-radius: 10% 0 0 0;
