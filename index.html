@@ -7,25 +7,58 @@
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="title">
         <h1>Tic Tac Toe</h1>
     </div>
     <div id="board">
-        <div class="square" id="square0"></div>
-        <div class="square" id="square1"></div>
-        <div class="square" id="square2"></div>
-        <div class="square" id="square3"></div>
-        <div class="square" id="square4"></div>
-        <div class="square" id="square5"></div>
-        <div class="square" id="square6"></div>
-        <div class="square" id="square7"></div>
-        <div class="square" id="square8"></div>
+        <div class="flip-container">
+            <div class="square" id="square0"></div>
+            <div class="square-back" id="square0-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square1"></div>
+            <div class="square-back" id="square1-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square2"></div>
+            <div class="square-back" id="square2-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square3"></div>
+            <div class="square-back" id="square3-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square4"></div>
+            <div class="square-back" id="square4-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square5"></div>
+            <div class="square-back" id="square5-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square6"></div>
+            <div class="square-back" id="square6-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square7"></div>
+            <div class="square-back" id="square7-back"></div>
+        </div>
+        <div class="flip-container">
+            <div class="square" id="square8"></div>
+            <div class="square-back" id="square8-back"></div>
+        </div>
+    </div>
     </div>  
     <div id="endGame">
         <input type="button" value="Restart" id="restartButton" onclick="restartButton()"/>
     </div>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script type="module">
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+      </script>
 </body>
 </html>

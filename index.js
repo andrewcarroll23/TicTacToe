@@ -20,21 +20,9 @@ const winning_combinations = [
 ];
 
 for (let i = 0; i < squares.length; i++) {
-  console.log(squares[i]);
-  squares[i].addEventListener("mouseover", () => {
-    
-    console.log("here");
-    if (squares[i].textContent === "" ) {
-        squares[i].style.backgroundColor = "rgba(0,0,0,0.3)"
-      squares[i].textContent = currentPlayer;
-    }
-  });
-  squares[i].addEventListener("mouseout", () => {
-    if(squares[i].textContent === currentPlayer && !pickedSquares(i)){
-        squares[i].style.backgroundColor = "rgba(0,0,0,0.1)"
-        squares[i].textContent = "";
-    }
-  });
+
+  squareMouseEventListeners(i);
+
   squares[i].addEventListener("click", () => {
     if (someoneWon) return;
     if (squares[i].textContent !== currentPlayer ||
@@ -45,6 +33,7 @@ for (let i = 0; i < squares.length; i++) {
     setSquareState(i);
     if (checkWin(currentPlayer)) {
       someoneWon = true;
+      shootConfetti()
       endMessage.textContent = `Game over! ${currentPlayer} wins!`;
       return;
     }
@@ -94,7 +83,22 @@ function restartButton() {
   endMessage.textContent = `X's turn!`;
   currentPlayer = players[0];
 }
+function squareMouseEventListeners(position) {
+  squares[position].addEventListener("mouseover", () => {
+    if(someoneWon) return
+    if (squares[position].textContent === "" ) {
+        squares[position].style.backgroundColor = "rgba(0,0,0,0.3)"
+      squares[position].textContent = currentPlayer;
+    }
+  });
 
+  squares[position].addEventListener("mouseout", () => {
+    if(squares[position].textContent === currentPlayer && !pickedSquares(position)){
+        squares[position].style.backgroundColor = "rgba(0,0,0,0.1)"
+        squares[position].textContent = "";
+    }
+  });
+} 
 function setSquareState(position) {
   // Set player
   squares[position].textContent = currentPlayer;
@@ -106,3 +110,21 @@ function setSquareState(position) {
 function pickedSquares(position) {
     return squares[position].style.backgroundColor === "lightcoral" || squares[position].style.backgroundColor === "lightskyblue";
 } 
+
+function shootConfetti(){
+  var scalar = 5;
+  var winner = confetti.shapeFromText({
+     text: currentPlayer,
+     color: currentPlayer === 'X' ? '#73a8c9' : '#ba6666',
+     fontFamily: "Audiowide",
+     scalar });
+
+  confetti({
+    particleCount: 150,
+    startVelocity: 30,
+    spread: 360,
+    shapes: [winner],
+    scalar,
+    
+  });
+}
