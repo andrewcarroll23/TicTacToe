@@ -125,6 +125,11 @@ function shootConfetti(){
     spread: 360,
     shapes: [winner],
     scalar,
+    origin: {
+      x: .5,
+      // since they fall down, start a bit higher than random
+      y: .25
+    }
     
   });
 }
