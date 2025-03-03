@@ -7,8 +7,7 @@ endMessage.textContent = `X's turn!`;
 endMessage.style.marginTop = "30px";
 endMessage.style.textAlign = "center";
 board.after(endMessage);
-var someoneWon = false;
-var isDarkMode = false;
+var playerWon = false;
 const winning_combinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -25,7 +24,7 @@ for (let i = 0; i < squares.length; i++) {
   squareMouseEventListeners(i);
 
   squares[i].addEventListener("click", () => {
-    if (someoneWon) return;
+    if (playerWon) return;
     if (squares[i].textContent !== currentPlayer ||
         (squares[i].textContent === currentPlayer && pickedSquares(i))
     ) {
@@ -33,13 +32,13 @@ for (let i = 0; i < squares.length; i++) {
     }
     setSquareState(i);
     if (checkWin(currentPlayer)) {
-      someoneWon = true;
+      playerWon = true;
       shootConfetti()
       endMessage.textContent = `Game over! ${currentPlayer} wins!`;
       return;
     }
     if (checkTie()) {
-      someoneWon = true;
+      playerWon = true;
       endMessage.textContent = `Tie Game! Click restart to play again`;
       return;
     }
@@ -76,7 +75,7 @@ function checkTie() {
 }
 
 function restartButton() {
-  someoneWon = false;
+  playerWon = false;
   for (let i = 0; i < squares.length; i++) {
     squares[i].textContent = "";
     squares[i].style.backgroundColor = "rgba(0,0,0,0.10)";
@@ -85,18 +84,17 @@ function restartButton() {
   currentPlayer = players[0];
 }
 function squareMouseEventListeners(position) {
-  squares[position].addEventListener("mouseover", () => {
-    if(someoneWon) return
-    if (squares[position].textContent === "" ) {
-        squares[position].style.backgroundColor = "rgba(0,0,0,0.3)"
-      squares[position].textContent = currentPlayer;
+  var pickedSquare = squares[position];
+  pickedSquare.addEventListener("mouseover", () => {
+    if(playerWon) return
+    if (pickedSquare.textContent === "" ) {
+      pickedSquare.textContent = currentPlayer;
     }
   });
 
-  squares[position].addEventListener("mouseout", () => {
-    if(squares[position].textContent === currentPlayer && !pickedSquares(position)){
-        squares[position].style.backgroundColor = "rgba(0,0,0,0.1)"
-        squares[position].textContent = "";
+  pickedSquare.addEventListener("mouseout", () => {
+    if(pickedSquare.textContent === currentPlayer && !pickedSquares(position)){
+        pickedSquare.textContent = "";
     }
   });
 } 
@@ -128,7 +126,6 @@ function shootConfetti(){
     scalar,
     origin: {
       x: .5,
-      // since they fall down, start a bit higher than random
       y: .25
     }
     
@@ -136,12 +133,4 @@ function shootConfetti(){
 }
 function darkMode() {
   document.body.classList.toggle('dark-mode');
-  document.body.style.backgroundColor = isDarkMode ? "whiteSmoke" : "black"
-  document.body.style.color = isDarkMode ? "black" : "whiteSmoke"
-  for (let i = 0; i < squares.length; i++) {
-    if (squares[i].textContent !== "") {
-      squares[i].style.color = isDarkMode ? "black" : "whiteSmoke"
-    }
-  }
-  isDarkMode = !isDarkMode;
 }

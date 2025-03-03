@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body id="body">
+<body>
     <div id="title">
         <h1>Tic Tac Toe</h1>
     <div id="board">
@@ -52,10 +52,8 @@
         </div>
     </div>
     <div id="endGame">
-        <input type="button" value="Restart" id="restartButton" onclick="restartButton()"/>
-    </div>
-    <div>
-        <button onclick="darkMode()" id="darkModeButton">
+        <input type="button" value="Restart" class="restart-button" onclick="restartButton()"/>
+        <button onclick="darkMode()" class="dark-mode-button">
             <span class="sun-icon">
                 <span class="material-icons">light_mode</span>
             </span>
