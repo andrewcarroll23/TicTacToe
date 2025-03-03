@@ -1,0 +1,38 @@
+#darkModeButton {
+    border-radius: 40px;
+    margin-left: 80%;
+    border: 1px solid black;
+    background: whitesmoke;
+    color: black;
+    display: flex;
+    justify-content: end;
+  }
+  
+  .dark-mode .sun-icon,
+  .moon-icon {
+    display: none;
+  }
+  
+  .dark-mode .moon-icon {
+    display: inline;
+  }
+  .dark-mode #darkModeButton{
+    background: black;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+  }
+  
+  .dark-mode #restartButton {
+    background-color: black;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+  }
+  
+  .dark-mode #restartButton:hover {
+    background-color: whitesmoke;
+    color: black;
+  }
+  
+  .dark-mode .square:hover {
+    color: whitesmoke;
+  }

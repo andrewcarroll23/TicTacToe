@@ -1,17 +1,15 @@
 body {
   font-family: "Inter", sans-serif;
-  color: #000000;
+  color: black;
   background-color: whitesmoke;
   width: 90vw;
   height: 90vh;
   margin-left: auto;
   margin-right: auto;
 }
-
 h1 {
   text-align: center;
 }
-
 #board {
   margin-left: auto;
   margin-right: auto;

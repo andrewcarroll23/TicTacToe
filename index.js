@@ -8,6 +8,7 @@ endMessage.style.marginTop = "30px";
 endMessage.style.textAlign = "center";
 board.after(endMessage);
 var someoneWon = false;
+var isDarkMode = false;
 const winning_combinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -132,4 +133,15 @@ function shootConfetti(){
     }
     
   });
+}
+function darkMode() {
+  document.body.classList.toggle('dark-mode');
+  document.body.style.backgroundColor = isDarkMode ? "whiteSmoke" : "black"
+  document.body.style.color = isDarkMode ? "black" : "whiteSmoke"
+  for (let i = 0; i < squares.length; i++) {
+    if (squares[i].textContent !== "") {
+      squares[i].style.color = isDarkMode ? "black" : "whiteSmoke"
+    }
+  }
+  isDarkMode = !isDarkMode;
 }

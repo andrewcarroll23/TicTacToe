@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="root/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Serif&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/darkmode.css">
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body id="body">
     <div id="title">
         <h1>Tic Tac Toe</h1>
-    </div>
     <div id="board">
         <div class="flip-container">
             <div class="square" id="square0"></div>
@@ -51,11 +51,20 @@
             <div class="square-back" id="square8-back"></div>
         </div>
     </div>
-    </div>  
     <div id="endGame">
         <input type="button" value="Restart" id="restartButton" onclick="restartButton()"/>
     </div>
-    <script src="root/index.js"></script>
+    <div>
+        <button onclick="darkMode()" id="darkModeButton">
+            <span class="sun-icon">
+                <span class="material-icons">light_mode</span>
+            </span>
+            <span class="moon-icon">
+                <span class="material-icons">dark_mode</span>
+            </span>
+        </button>
+    </div>
+    <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script type="module">
         import confetti from 'https://cdn.skypack.dev/canvas-confetti';
