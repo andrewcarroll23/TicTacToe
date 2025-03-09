@@ -96,7 +96,7 @@ function restartButton() {
 
   for (let i = 0; i < squares.length; i++) {
     squares[i].textContent = "";
-    squares[i].style.backgroundColor = "rgba(0,0,0,0.10)";
+    squares[i].style.backgroundColor = "";
     squares[i].style.transform = "";
   }
   endMessage.textContent = `X's turn!`;
