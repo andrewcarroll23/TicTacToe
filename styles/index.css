@@ -25,8 +25,15 @@ h1 {
   justify-content: center;
   position: relative;
 }
-
-.square {
+.flip-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.square{
   width: 120px;
   height: 120px;
   border: 1px solid #d3d3d3;
@@ -35,30 +42,16 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .3s;
+  transition: .5s;
   font-family: "Audiowide";
   font-weight: 400;
   font-style: normal;
+  border-radius: 10%;
+  transition: transform .8s;
 }
 
 .square:hover{
   background-color: rgba(0,0,0,0.3);
-}
-
-#square0 {
-  border-radius: 10% 0 0 0;
-}
-
-#square2 {
-  border-radius: 0 10% 0 0;
-}
-
-#square6 {
-  border-radius: 0 0 0 10%;
-}
-
-#square8 {
-  border-radius: 0 0 10% 0;
 }
 
 .restart-button {
