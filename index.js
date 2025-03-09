@@ -1,5 +1,6 @@
 const board = document.getElementById("board");
-const squares = document.getElementsByClassName("square");
+let squares = document.getElementsByClassName("square");
+
 const players = ["X", "O"];
 let currentPlayer = players[0];
 const endMessage = document.createElement("h2");
@@ -30,34 +31,51 @@ for (let i = 0; i < squares.length; i++) {
     ) {
       return;
     }
+
     setSquareState(i);
-    if (checkWin(currentPlayer)) {
-      playerWon = true;
-      shootConfetti()
-      endMessage.textContent = `Game over! ${currentPlayer} wins!`;
-      return;
-    }
-    if (checkTie()) {
-      playerWon = true;
-      endMessage.textContent = `Tie Game! Click restart to play again`;
-      return;
-    }
+
+  });
+}
+
+function setSquareState(position) {
+  squares[position].style.transform = "rotateX(180deg)";
+  setTimeout(() => {
+    // Set player
+    squares[position].textContent = currentPlayer;
+    // Set square color
+    squares[position].style.backgroundColor =
+      currentPlayer === "X" ? "lightskyblue" : "lightcoral";
+    checkConditions();  
+  }, "250")
+}
+
+function checkConditions(){
+  if (checkWin(currentPlayer)) {
+    playerWon = true;
+    shootConfetti()
+    endMessage.textContent = `Game over! ${currentPlayer} wins!`;
+    return;
+  }
+  if (checkTie()) {
+    playerWon = true;
+    endMessage.textContent = `Tie Game! Click restart to play again`;
+    return;
+  }
     currentPlayer = currentPlayer === players[0] ? players[1] : players[0];
     if (currentPlayer == players[0]) {
       endMessage.textContent = `X's turn!`;
     } else {
       endMessage.textContent = `O's turn!`;
     }
-  });
 }
 
 function checkWin(currentPlayer) {
   for (let i = 0; i < winning_combinations.length; i++) {
     const [a, b, c] = winning_combinations[i];
     if (
-      squares[a].textContent === currentPlayer &&
-      squares[b].textContent === currentPlayer &&
-      squares[c].textContent === currentPlayer
+      squares[a]?.textContent === currentPlayer &&
+      squares[b]?.textContent === currentPlayer &&
+      squares[c]?.textContent === currentPlayer
     ) {
       return true;
     }
@@ -73,14 +91,16 @@ function checkTie() {
   }
   return true;
 }
-
 function restartButton() {
   playerWon = false;
+
   for (let i = 0; i < squares.length; i++) {
     squares[i].textContent = "";
     squares[i].style.backgroundColor = "rgba(0,0,0,0.10)";
+    squares[i].style.transform = "";
   }
   endMessage.textContent = `X's turn!`;
+  
   currentPlayer = players[0];
 }
 function squareMouseEventListeners(position) {
@@ -98,16 +118,10 @@ function squareMouseEventListeners(position) {
     }
   });
 } 
-function setSquareState(position) {
-  // Set player
-  squares[position].textContent = currentPlayer;
-  // Set square color
-  squares[position].style.backgroundColor =
-    currentPlayer === "X" ? "lightskyblue" : "lightcoral";
-}
+
 
 function pickedSquares(position) {
-    return squares[position].style.backgroundColor === "lightcoral" || squares[position].style.backgroundColor === "lightskyblue";
+    return squares[position]?.style?.backgroundColor === "lightcoral" || squares[position].style.backgroundColor === "lightskyblue";
 } 
 
 function shootConfetti(){
