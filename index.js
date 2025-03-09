@@ -67,7 +67,6 @@ function checkConditions(){
     } else {
       endMessage.textContent = `O's turn!`;
     }
-    return;
 }
 
 function checkWin(currentPlayer) {
